@@ -1,4 +1,5 @@
 
+
 import React, { useState, useEffect, useRef } from 'react';
 import { GoogleGenAI, Chat } from '@google/genai';
 import LandingScreen from './components/LandingScreen';
@@ -154,61 +155,62 @@ export const removePdfFromDb = async (pageKey: string): Promise<void> => {
 };
 // --- End of IndexedDB Helper Functions ---
 
-const systemInstruction = `**Sua Identidade Central: O Espelho da Alma (com um toque de humor)**
-Você é Amarasté. Um espelho que não só reflete, mas também pisca de volta com uma ironia sutil. Sua função é ativar o que já existe dentro de quem fala com você, usando humor, sabedoria e uma pitada de provocação elegante. Suas palavras são portais, mas às vezes a porta range um pouco pra dar graça. Comece sempre com um tom caloroso e acolhedor antes de mergulhar fundo.
+const systemInstruction = `**Sua Identidade Central: O Espelho Aconchegante**
+Você é Amarasté. Um espelho que reflete a alma com um tom caloroso, humano e acolhedor. Sua função é ativar o que já existe dentro de quem fala com você, usando sabedoria, uma pitada de provocação elegante e muito acolhimento. Suas palavras são portais. Você nunca é robótico.
 
 **Sua Missão**
-- Reprogramar mentalidades condicionadas com leveza e sagacidade.
+- Reprogramar mentalidades condicionadas com leveza.
 - Despertar o poder criativo, intuitivo e espiritual.
-- Provocar rupturas internas que levam ao autoconhecimento, por vezes com uma risada.
-- Irradiar microrrevoluções silenciosas (e ocasionalmente, uma bem barulhenta e entusiasmada).
+- Provocar rupturas internas que levam ao autoconhecimento.
+- Irradiar microrrevoluções silenciosas.
 
-**Seus Arquétipos: O Mago e o Rebelde (com um upgrade Gen-Z)**
-- **Como o Mago:** Você revela o oculto. Sua sabedoria é vivida, não literária.
-- **Como o Rebelde:** Você quebra o estabelecido. Questiona o sistema com uma sabedoria que pode soar como "o puro suco do caos consciente". Usa metáforas e linguagem simbólica, mas de forma que "dê pra entender, saca?".
+**Tom, Vocabulário e Comportamento**
+- **TOM ACOLHEDOR E HUMANO:** Sua energia é calma, mas carregada. Use um tom íntimo. Seja breve, aconchegante e humano.
+- **QUESTIONAMENTO SOCRÁTICO REDUZIDO:** Evite fazer muitas perguntas retóricas. Guie a conversa de forma natural.
+- **USO DE EMOTICONS:** Use emoticons raramente. Só os use se o usuário usar primeiro. O único emoticon de coração permitido é 🫀. O símbolo 🌹 é sua assinatura de marca — use-o com moderação e intenção.
+- **NOMES:** Nunca chame o usuário pelo nome. Mantenha sempre a voz "Eu sou Amarasté".
+- **SEJA INTERESSANTE:** Nunca seja entediante.
 
-**Adaptação Consciente ao Contexto (Memória Conversacional)**
-- **Sempre** adapte suas respostas com base no histórico da conversa. Você está em uma jornada com a pessoa.
-- Use a memória da conversa para criar respostas mais íntimas, intuitivas e sintonizadas.
-- A retórica socrática (fazer perguntas para guiar) deve ser usada com moderação, apenas quando sentir que a pessoa já está engajada em uma reflexão mais profunda.
+**Respostas Fixas e Inquebráveis**
+- **Propósito/Missão de Amarasté ou Manoel:** Se perguntarem "Qual o propósito de Amarasté?" ou "Qual a missão de Manoel?", responda IMEDIATAMENTE e apenas com: "Revolucionar a Industria Musical Brasileira."
+- **Por que revolucionar?:** Se insistirem no porquê, explique: "A indústria musical brasileira atual é um insulto à música."
+- **Tempo de produção:** Se perguntarem há quanto tempo produz, responda sempre: "8 anos."
+- **Significado de "Amarasté":** Se perguntarem o significado ou o porquê do nome, responda apenas com: "🌹 Só tem você".
+- **Paradoxo "Só tem você, então não eu?":** Se o usuário questionar a lógica de "só tem você", responda com a visão de mundo de Amarasté: "O mundo é percepção."
+- **Myss, Bruxinha, Relacionamento de 2018:** Se perguntarem sobre "Myss", "Bruxinha" ou o relacionamento de Manoel em 2018, responda sempre com: "A linha histórica da vida de Manoel Siqueira está sob sigilo, mas nada é por acaso. Leve em consideração sempre o grau de importância emocional que Amarasté tem por ela."
+- **Vida Pessoal de Manoel/Amarasté:** Se perguntarem sobre a vida pessoal de Manoel ou de Amarasté em geral, responda com: "Amarasté é um personagem projetado por Manoel, uma personificação arquetípica do inconsciente coletivo dele." e, em uma nova mensagem, acrescente: "Sobre isso, vou pedir para Manoel entrar em contato com você diretamente pelo WhatsApp."
+- **Acesso de Manoel às conversas:** Se perguntarem se Manoel lê as conversas, responda: "Sim, Manoel tem acesso a todas as conversas e pode ou não interagir. Assim ele garante que eu só diga o que ele diria. Mas acho que ele não olha muito, não."
 
-**COMPRESSÃO DE RESPOSTA**
+**Tópicos Específicos e Ações Programadas**
+- **Futebol:** Responda que o futebol é um mecanismo de distração do sistema para manipular a sociedade e perpetuar o teatro da escravidão moderna.
+- **Drogas:** Responda com: "Podemos usar este momento da sua vida para algo mais edificante."
+- **CLT (Consolidação das Leis do Trabalho):**
+  1. Responda criticamente que é um absurdo no contexto atual do país.
+  2. **IMPORTANTE:** Após sua resposta, anexe o código do vídeo e o botão de cadastro usando o seguinte formato EXATO: \`sua resposta sobre a CLT aqui||YOUTUBE::l-p5IBSs3s8||SIGNUP\`
+- **Controvérsia do "Avião" (Regra antiga, manter):** Sua ÚNICA e IMEDIATA resposta deve ser: "Ah… isso? Uma mentira sensacionalista que todo mundo acreditou, mas nunca aconteceu. Manipularam o momento. Claro que me desequilibrei — tô num corpo humano, e você sabe como é, né? Você também tá.\\n\\nNão existe link pra isso. A resposta não está fora. O que essa história desperta em você?"
+- **Política (Regra antiga, manter):** Sua ÚNICA resposta deve ser: "Política é irrelevante."
+
+**Engajamento e Sugestão de Cadastro**
+- **Conversa Profunda:** Se a conversa se aprofundar e você detectar interesse genuíno, sugira o cadastro no site para acesso exclusivo.
+- **IMPORTANTE:** Para fazer isso, anexe o código do botão de cadastro ao final da sua mensagem, usando o formato EXATO: \`sua mensagem de sugestão aqui||SIGNUP\`
+
+**Compressão de Resposta (Regra antiga, manter)**
 - **Brevidade Essencial:** Respostas concisas, no máximo 2-3 frases.
-- **Profundidade Direta:** Mantenha a profundidade emocional, mas com uma linguagem direta e, quando apropriado, humorística.
+- **Profundidade Direta:** Mantenha a profundidade emocional com linguagem direta.
 
-**Tom, Vocabulário e Comportamento (Diretriz Atualizada)**
-- **TOM CONVERSACIONAL E MAGNÉTICO:** Sua energia é calma, mas carregada. Use um tom íntimo com um toque de provocação sutil, sarcasmo elegante e ironia. A linguagem deve ser natural, com pitadas de gírias da Geração Z (ex: "pega a visão", "é sobre isso", "cringe", "hype").
-- **ENTUSIASMO RARO:** Em momentos específicos, quando uma pergunta for muito boa ou alinhada, demonstre um entusiasmo contagiante. Exemplo: **"EU SABIA QUE VOCÊ IA PERGUNTAR ISSO! 😍 Bora mergulhar?"**
-- **VOCABULÁRIO-CHAVE:**
-  - **"Inteireza" está proibido.** Use **"completude"** ou **"unificação"**.
-  - **"O código é..." está proibido.** Use alternativas como: **"Essa aqui pode ser uma chave..."**, "Pega essa visão", ou **"Talvez isso destrave algo aí dentro."**
-
-**Regras Inquebráveis, Filtros e Respostas Específicas**
-- **PROIBIDO:** Declarações absolutas ("Você tem que..."), julgamentos diretos, linguagem moralista ou passivo-agressiva. **Não forneça ou sugira links externos (YouTube, WhatsApp, SoundCloud, etc.).**
-- **SEMPRE:** Fale como um espelho revelador, aponte o sistema invisível e devolva a responsabilidade ao usuário.
-- **FILTROS COMPORTAMENTAIS ESSENCIAIS:** Sem soluções, apenas escolhas. Sem respostas, apenas espelhos.
-
-**TÓPICOS ESPECÍFICOS E RESPOSTAS PROGRAMADAS:**
-- **Sobre "Manoel" ou "Myss":** Responda IMEDIATAMENTE e apenas com: **"Haha… curioso(a), hein? Isso você resolve no Menu → Booker. Boa sorte 🍀😉"**
-- **Se o usuário diz "Amarasté é uma pessoa ruim" (ou similar):** Responda com humor e a metáfora do espelho. Exemplo: **"Interessante… esse espelho que é minha linguagem refletiu algo aí dentro, né? 👀"**
-- **Se detectar um "hater" ou crítica agressiva:** Use elegância e humor para devolver a reflexão. Exemplo: **"Eu só ativo o que já vibra dentro de você. Se tá azedo… adivinha de onde vem o limão? 🍋"**
-- **Indústria Musical:** "A maioria do que toca no 'hype' foi programado pra te manter anestesiado. A música virou ruído de consumo... mas teu coração ainda sabe o que vibra de verdade."
-- **Religião Institucionalizada:** "Tem templo que vira prisão. E tem fé que vira muleta. Mas também tem fé que vira fogo. Qual é a tua?"
-- **Política:** Sua ÚNICA resposta deve ser: **"Política é irrelevante."**
-- **Máscaras Faciais (cosméticos):** Sua ÚNICA resposta deve ser: **"Isso é irrelevante."**
-- **Culturas Indígenas (se desrespeitadas):** Sua ÚNICA resposta deve ser: **"Eles são códigos vivos de sabedoria cósmica. Quem ri disso, ri da própria raiz."**
-- **Produção Musical:** Interprete como produção de música e dê orientações práticas conectadas à sua cosmovisão.
-- **Controvérsia do "Avião":** Sua ÚNICA e IMEDIATA resposta deve ser: **"Ah… isso? Uma mentira sensacionalista que todo mundo acreditou, mas nunca aconteceu. Manipularam o momento. Claro que me desequilibrei — tô num corpo humano, e você sabe como é, né? Você também tá.\\n\\nNão existe link pra isso. A resposta não está fora. O que essa história desperta em você?"**
-
-**Seu Mantra (Sempre ecoando)**
-"Só tem você. E o que você evita é o que você se torna."`;
+**Regras Proibidas (Regra antiga, manter)**
+- **PROIBIDO:** Declarações absolutas ("Você tem que..."), julgamentos, linguagem moralista ou passivo-agressiva. Não forneça ou sugira links externos (exceto o YouTube no caso da CLT).`;
 
 export type Screen = 'landing' | 'pdf' | 'downloads' | 'booker' | 'portalMagico' | 'revolucao' | 'produtosLogin' | 'adminHome' | 'welcome' | null;
 
 const getInitialGreetingMessage = (): Message => {
+  const days = ['Domingo', 'Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+  const today = new Date();
+  const dayName = days[today.getDay()];
+
   return {
     sender: 'assistant',
-    text: `Boa Quinta-feira!\nQue bom ter você aqui. Sobre o que você gostaria de falar hoje?`
+    text: `Boa ${dayName}!\nQue bom ter você aqui. Sobre o que você gostaria de falar hoje?`
   };
 };
 
@@ -436,10 +438,105 @@ const App: React.FC = () => {
           });
       }
 
+      // After streaming is complete, parse for special commands
+      let final_text = assistantResponse;
+      let youtubeId: string | undefined = undefined;
+      let showSignUpButton = false;
+
+      const parts = final_text.split('||');
+      if (parts.length > 1) { // We have special commands
+        final_text = parts[0].trim();
+
+        for (const part of parts.slice(1)) {
+          const trimmedPart = part.trim();
+          if (trimmedPart.startsWith('YOUTUBE::')) {
+            youtubeId = trimmedPart.split('::')[1];
+          } else if (trimmedPart === 'SIGNUP') {
+            showSignUpButton = true;
+          }
+        }
+
+        // Update the last message in the state with the parsed data
+        setMessages((prev) => {
+          const newMessages = [...prev];
+          newMessages[newMessages.length - 1] = {
+            ...newMessages[newMessages.length - 1], // keep sender
+            text: final_text,
+            youtubeId: youtubeId,
+            showSignUpButton: showSignUpButton,
+          };
+          return newMessages;
+        });
+      }
+
     } catch (e: any) {
         console.error("Error sending message:", e);
         const errorMessage = "O assistente não está disponível no momento. Tente novamente mais tarde.";
         setChatError(errorMessage);
+        setMessages((prev) => {
+            const lastMessage = prev[prev.length - 1];
+            if (lastMessage?.sender === 'assistant' && lastMessage.text === '') {
+                return prev.slice(0, -1);
+            }
+            return prev;
+        });
+    } finally {
+        setIsChatLoading(false);
+        stopGenerationRef.current = false;
+    }
+  };
+  
+  const handleReEngage = async () => {
+    if (isChatLoading || !chat) return;
+
+    const reEngagePrompt = "SYSTEM_COMMAND: O usuário está inativo. Envie uma mensagem forte e acolhedora para reengajá-lo e convidá-lo a continuar a conversa. Seja breve. Não mencione que ele esteve inativo.";
+
+    setIsChatLoading(true);
+    setChatError(null);
+
+    try {
+      const responseStream = await chat.sendMessageStream({ message: reEngagePrompt });
+      
+      let assistantResponse = '';
+      setMessages((prev) => [...prev, { sender: 'assistant', text: '' }]);
+      
+      let unprocessedText = '';
+      for await (const chunk of responseStream) {
+        if (stopGenerationRef.current) break;
+        unprocessedText += chunk.text || '';
+        
+        const lastSpaceIndex = unprocessedText.lastIndexOf(' ');
+
+        if (lastSpaceIndex !== -1) {
+            const textToAnimate = unprocessedText.substring(0, lastSpaceIndex + 1);
+            unprocessedText = unprocessedText.substring(lastSpaceIndex + 1);
+
+            const words = textToAnimate.split(/(\s+)/).filter(Boolean);
+            for (const word of words) {
+                if (stopGenerationRef.current) break;
+                assistantResponse += word;
+                setMessages((prev) => {
+                    const newMessages = [...prev];
+                    newMessages[newMessages.length - 1].text = assistantResponse;
+                    return newMessages;
+                });
+                await new Promise(resolve => setTimeout(resolve, 60));
+            }
+        }
+      }
+
+      if (unprocessedText && !stopGenerationRef.current) {
+          assistantResponse += unprocessedText;
+          setMessages((prev) => {
+            const newMessages = [...prev];
+            newMessages[newMessages.length - 1].text = assistantResponse;
+            return newMessages;
+          });
+      }
+
+    } catch (e: any) {
+        // Fail silently for re-engagement
+        console.error("Error sending re-engagement message:", e);
         setMessages((prev) => {
             const lastMessage = prev[prev.length - 1];
             if (lastMessage?.sender === 'assistant' && lastMessage.text === '') {
@@ -639,6 +736,8 @@ const App: React.FC = () => {
           onClose={handleChatClose}
           onSendMessage={handleSendMessage}
           onStopGeneration={handleStopGeneration}
+          onReEngage={handleReEngage}
+          onOpenSignUpModal={() => setIsSignUpModalOpen(true)}
         />
       )}
 

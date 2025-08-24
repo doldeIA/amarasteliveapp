@@ -9,6 +9,8 @@ import { playClickSound, applyClickAnimation } from '../App';
 export interface Message {
   sender: 'user' | 'assistant';
   text: string;
+  youtubeId?: string;
+  showSignUpButton?: boolean;
 }
 
 interface ChatModalProps {
@@ -18,6 +20,8 @@ interface ChatModalProps {
   onClose: () => void;
   onSendMessage: (input: string) => Promise<void>;
   onStopGeneration: () => void;
+  onReEngage: () => void;
+  onOpenSignUpModal: () => void;
 }
 
 /**
@@ -61,13 +65,17 @@ const ChatModal: React.FC<ChatModalProps> = ({
   onClose,
   onSendMessage,
   onStopGeneration,
+  onReEngage,
+  onOpenSignUpModal,
 }) => {
   const [userInput, setUserInput] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const chatRef = useRef<HTMLDivElement>(null);
   const [autoScroll, setAutoScroll] = useState(true);
 
-  // Removed typewriter effect for initial message to make it appear instantly.
+  const idleTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const [hasSentReEngagement, setHasSentReEngagement] = useState(false);
+
   useEffect(() => {
     if (autoScroll && chatRef.current) {
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
@@ -77,6 +85,33 @@ const ChatModal: React.FC<ChatModalProps> = ({
   useEffect(() => {
     inputRef.current?.focus();
   }, []);
+
+  // Reset re-engagement flag when a user sends a message
+  useEffect(() => {
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage && lastMessage.sender === 'user') {
+      setHasSentReEngagement(false);
+    }
+  }, [messages]);
+
+  // Idle timer for re-engagement
+  useEffect(() => {
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+
+    const canReEngage = !isLoading && !hasSentReEngagement && messages.length > 0 && messages[messages.length-1].sender === 'assistant';
+
+    if (canReEngage) {
+        idleTimerRef.current = setTimeout(() => {
+            onReEngage();
+            setHasSentReEngagement(true);
+        }, 10000); // 10 seconds
+    }
+
+    return () => {
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, [userInput, isLoading, hasSentReEngagement, messages, onReEngage]);
+
 
   const handleScroll = () => {
     if (!chatRef.current) return;
@@ -152,12 +187,37 @@ const ChatModal: React.FC<ChatModalProps> = ({
                         <span className="w-1.5 h-1.5 bg-warm-brown/50 rounded-full dot-3"></span>
                       </div>
                     ) : (
-                       <p className="font-normal">
+                       <div className="font-normal">
                         {renderFormattedText(msg.text, !isStreaming)}
                         {isStreaming && (
                           <span className="inline-block w-2 h-4 bg-warm-brown ml-1 animate-pulse"></span>
                         )}
-                      </p>
+                      </div>
+                    )}
+                    {msg.youtubeId && !isStreaming && (
+                        <div className="mt-3 rounded-lg overflow-hidden aspect-video">
+                            <iframe
+                                src={`https://www.youtube.com/embed/${msg.youtubeId}`}
+                                title="YouTube video player"
+                                frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                                className="w-full h-full"
+                            ></iframe>
+                        </div>
+                    )}
+                    {msg.showSignUpButton && !isStreaming && (
+                        <button
+                            onClick={(e) => {
+                                playClickSound();
+                                applyClickAnimation(e);
+                                onOpenSignUpModal();
+                                onClose(); // Close chat modal
+                            }}
+                            className="mt-3 w-full text-center bg-primary text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-opacity-90 transition-colors"
+                        >
+                            Cadastre-se para conteúdo exclusivo
+                        </button>
                     )}
                 </div>
               </div>
